@@ -1,0 +1,11 @@
+name: mes-reception
+
+services:
+  front:
+    build:
+      context: ./application_mes_reception
+    container_name: mes-reception-front
+    image: mes-reception-front:latest
+    ports:
+      - "8070:8080"
+    restart: always
