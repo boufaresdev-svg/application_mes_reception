@@ -1,0 +1,193 @@
+.menu-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+
+.menu-header {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  font-size: 48px;
+}
+
+.logo h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0c4a6e;
+  margin: 0;
+}
+
+.logo p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+.menu-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.menu-card {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  padding: 48px 32px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+  font-size: 72px;
+  margin-bottom: 24px;
+}
+
+.menu-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+}
+
+.menu-card p {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .menu-main {
+    padding: 32px 16px;
+  }
+
+  .menu-card {
+    padding: 40px 24px;
+  }
+
+  .card-icon {
+    font-size: 64px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    gap: 12px;
+  }
+
+  .logo-icon {
+    font-size: 40px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu-main {
+    padding: 24px 12px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .menu-card {
+    padding: 32px 20px;
+  }
+
+  .card-icon {
+    font-size: 56px;
+  }
+
+  .menu-card h2 {
+    font-size: 20px;
+  }
+
+  .menu-card p {
+    font-size: 14px;
+  }
+}
+
+/* Petits téléphones */
+@media (max-width: 480px) {
+  .logo-icon {
+    font-size: 36px;
+  }
+
+  .logout-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .card-icon {
+    font-size: 48px;
+  }
+}

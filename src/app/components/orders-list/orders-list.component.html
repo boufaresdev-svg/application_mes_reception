@@ -1,0 +1,61 @@
+<div class="orders-container">
+  <header class="orders-header">
+    <button class="back-btn" (click)="goBack()">
+      ← Retour
+    </button>
+    <div class="header-title">
+      <h1>Liste des bons de réception</h1>
+      <p>{{ operator()?.name }}</p>
+    </div>
+    @if (orders().length > 0) {
+      <button class="print-all-btn" (click)="printAllOrders()" style="margin-left: 80%;">
+        🖨️ Imprimer réception
+      </button>
+    }
+  </header>
+
+  <main class="orders-main">
+    @if (loading()) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Chargement des bons...</p>
+      </div>
+    } @else if (orders().length === 0) {
+      <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h2>Aucun bon de réception</h2>
+        <p>Il n'y a aucun bon disponible.</p>
+      </div>
+    } @else {
+      <div class="orders-grid">
+        @for (order of orders(); track order.id) {
+          <button class="order-card" (click)="selectOrder(order)">
+            <div class="order-header">
+              <span class="order-number">{{ order.order_number }}</span>
+              <span class="order-status" [ngClass]="getStatusClass(order.status)">
+                {{ getStatusLabel(order.status) }}
+              </span>
+            </div>
+            <div class="order-body">
+              <div class="order-info">
+                <span class="info-label">Fournisseur</span>
+                <span class="info-value">{{ order.supplier_name }}</span>
+              </div>
+              <div class="order-info">
+                <span class="info-label">Quantité</span>
+                <span class="info-value">{{ order.total_quantity || 0 }} L</span>
+              </div>
+              <div class="order-info">
+                <span class="info-label">Date</span>
+                <span class="info-value">{{ order.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <span class="action-text">Cliquer pour traiter →</span>
+            </div>
+          </button>
+        }
+      </div>
+    }
+  </main>
+</div>

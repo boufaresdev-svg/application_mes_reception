@@ -1,0 +1,231 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.logo-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0c4a6e;
+  margin: 0 0 8px 0;
+}
+
+.logo-section p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.pin-section h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pin-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  line-height: 1;
+}
+
+.pin-dot.empty {
+  background: #e2e8f0;
+}
+
+.error-message {
+  text-align: center;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.key {
+  aspect-ratio: 1;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.key:not(:disabled):hover {
+  background: #f8fafc;
+  border-color: #0ea5e9;
+  transform: scale(1.05);
+}
+
+.key:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.key.clear {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.key.clear:hover {
+  background: #fca5a5;
+  color: white;
+}
+
+.key:disabled {
+  opacity: 0;
+  cursor: default;
+}
+
+.help-text {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+
+/* ===== Responsive ===== */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .auth-card {
+    padding: 40px 32px;
+  }
+
+  .logo-icon {
+    font-size: 56px;
+  }
+
+  .logo-section h1 {
+    font-size: 24px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 16px;
+  }
+
+  .auth-card {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .logo-section {
+    margin-bottom: 32px;
+  }
+
+  .logo-icon {
+    font-size: 48px;
+  }
+
+  .logo-section h1 {
+    font-size: 22px;
+  }
+
+  .logo-section p {
+    font-size: 13px;
+  }
+
+  .pin-section h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .pin-display {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .pin-dot {
+    width: 16px;
+    height: 16px;
+    font-size: 24px;
+  }
+
+  .keypad {
+    gap: 10px;
+  }
+
+  .key {
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .help-text {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+}
+
+/* Petits téléphones */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px 20px;
+  }
+
+  .logo-icon {
+    font-size: 40px;
+  }
+
+  .logo-section h1 {
+    font-size: 20px;
+  }
+
+  .pin-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .key {
+    font-size: 15px;
+  }
+}

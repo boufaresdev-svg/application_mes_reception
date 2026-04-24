@@ -1,0 +1,32 @@
+<div class="menu-container">
+  <header class="menu-header">
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🚛</span>
+        <div>
+          <h1>Réception Laitière</h1>
+          <p>Bienvenue, {{ operator()?.name }}</p>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <span>🚪</span> Déconnexion
+      </button>
+    </div>
+  </header>
+
+  <main class="menu-main">
+    <div class="menu-grid">
+      <button class="menu-card" (click)="navigateToOrders()">
+        <div class="card-icon">📋</div>
+        <h2>Liste des bons</h2>
+        <p>Consulter les bons de réception</p>
+      </button>
+
+      <button class="menu-card" (click)="navigateToOrders()">
+        <div class="card-icon">🚛</div>
+        <h2>Réception du lait</h2>
+        <p>Lancer le quantage et traiter un bon</p>
+      </button>
+    </div>
+  </main>
+</div>

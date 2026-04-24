@@ -1,0 +1,35 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="logo-section">  
+      <h1>Réception Laitière</h1>
+    </div>
+
+    <div class="pin-section">
+      <div class="pin-display">
+        @for (dot of pinDisplay(); track $index) {
+          <span class="pin-dot">{{ dot }}</span>
+        }
+        @for (empty of [1,2,3,4].slice(pinDisplay().length); track $index) {
+          <span class="pin-dot empty"></span>
+        }
+      </div>
+
+      @if (errorMessage()) {
+        <div class="error-message">{{ errorMessage() }}</div>
+      }
+
+      <div class="keypad">
+        @for (num of [1,2,3,4,5,6,7,8,9]; track num) {
+          <button class="key" (click)="addDigit(num.toString())">{{ num }}</button>
+        }
+        <button class="key clear" (click)="clear()">C</button>
+        <button class="key" (click)="addDigit('0')">0</button>
+        <button class="key" disabled></button>
+      </div>
+    </div>
+
+    <!-- <div class="help-text">
+      Code: 1111
+    </div> -->
+  </div>
+</div>

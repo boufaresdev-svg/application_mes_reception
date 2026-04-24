@@ -1,0 +1,104 @@
+<div class="reception-container">
+  @if (weighing()) {
+    <div class="weighing-fullscreen">
+      <div class="weighing-content">
+        <div class="weighing-icon">🚛</div>
+        <h2>Quantite en cours</h2>
+        <div class="spinner-large"></div>
+        <div class="quantity-display">
+          <span class="quantity-value">{{ quantity }}</span>
+          <span class="quantity-unit">Litres</span>
+        </div>
+        <div class="weighing-actions">
+          <button class="btn btn-secondary btn-large" (click)="cancelWeighing()" [disabled]="saving()">
+            Annuler
+          </button>
+          <button class="btn btn-success btn-large" (click)="finishWeighing()" [disabled]="saving()">
+            @if (saving()) {
+              <div class="spinner-small"></div>
+              Enregistrement...
+            } @else {
+              ✓ Terminer
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  } @else if (loading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Chargement...</p>
+    </div>
+  } @else if (order()) {
+    <header class="reception-header">
+      <button class="back-btn" (click)="goBack()">← Retour</button>
+      <div class="header-info">
+        <div class="order-title">
+          <h1>{{ order()!.order_number }}</h1>
+          <span class="order-supplier">{{ order()!.supplier_name }}</span>
+        </div>
+        <div class="order-stats">
+          <div class="stat">
+            <span class="stat-label">Quantité totale</span>
+            <span class="stat-value">{{ order()!.total_quantity || 0 }} L</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Réceptions</span>
+            <span class="stat-value">{{ weighings().length }}</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="reception-main">
+      <div class="actions-section">
+        <button class="btn btn-primary" (click)="startWeighing()">
+          ⚖️ Nouvelle Réception
+        </button>
+        @if (weighings().length > 0) {
+          <button class="btn btn-info" (click)="printPDF()">
+            🖨️ Imprimer PDF
+          </button>
+        }
+        @if (weighings().length > 0 && order()!.status !== 'completed') {
+          <button class="btn btn-success" (click)="completeOrder()">
+            ✓ Clôturer le bon
+          </button>
+        }
+      </div>
+
+      <div class="weighings-section">
+        <h2>Historique des Réceptions</h2>
+        @if (weighings().length === 0) {
+          <div class="empty-weighings">
+            <div class="empty-icon">⚖️</div>
+            <p>Aucune Réception enregistrée</p>
+            <p class="empty-subtitle">Cliquez sur "Nouvelle Réception" pour commencer</p>
+          </div>
+        } @else {
+          <div class="weighings-list">
+            @for (weighing of weighings(); track weighing.id) {
+              <div class="weighing-card">
+                <div class="weighing-header">
+                  <span class="weighing-time">
+                    {{ weighing.created_at | date:'dd/MM/yyyy HH:mm:ss' }}
+                  </span>
+                  <span class="weighing-quantity">{{ weighing.quantity }} L</span>
+                </div>
+              </div>
+            }
+          </div>
+          <div class="weighings-total">
+            <span>Total:</span>
+            <span class="total-value">{{ getTotal() }} L</span>
+          </div>
+        }
+      </div>
+    </main>
+  } @else {
+    <div class="error-state">
+      <h2>Bon introuvable</h2>
+      <button class="btn btn-primary" (click)="goBack()">Retour</button>
+    </div>
+  }
+</div>
